@@ -1,24 +1,48 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import Blog from './pages/Blog';
+import BlogDetail from './pages/BlogDetail';
+import About from './pages/About';
+import Services from './pages/Services';
+import Contact from './pages/Contact';
+import Auth from './pages/Auth';
+import AdminDashboard from './pages/AdminDashboard';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-wrapper d-flex flex-column min-vh-100">
+        <Navbar />
+        <main className="flex-grow-1 main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Auth />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route
+              path="*"
+              element={
+                <div className="container page-container text-center">
+                  <h1 className="display-5 mb-3">Page Not Found</h1>
+                  <p className="text-muted">
+                    We can't find the page you are looking for.
+                  </p>
+                </div>
+              }
+            />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

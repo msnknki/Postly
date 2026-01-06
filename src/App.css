@@ -1,38 +1,126 @@
-.App {
-  text-align: center;
+.app-wrapper {
+  background-color: #f8f9fa;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-content {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.page-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.main-banner {
+  background: linear-gradient(135deg, #0062e6, #33aeff);
+  color: #fff;
+  padding: 5rem 0;
+  margin-bottom: 3rem;
+}
+
+.main-banner .btn {
+  min-width: 180px;
+}
+
+.main-blog {
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.main-blog-card {
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.075);
+}
+
+.aside-main {
+  width: 320px;
+} .site-logo {
+  height: 200px;      /* bigger height */
+  width: auto;        /* keeps aspect ratio */
+  object-fit: contain; 
+  display: block;     /* ensures proper alignment */
+  margin: 0 auto;     /* centers logo if needed */
+}
+
+
+.category-aside .list-group-item.active {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+
+.footer {
+  background-color: #1877F2;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  color: #fff;
+}
+
+.footer .social-icon {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: #fff !important;
 }
 
-.App-link {
-  color: #61dafb;
+.footer .social-icon:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  color: #fff !important;
 }
 
-@keyframes App-logo-spin {
+.footer .social-icon i {
+  font-size: 1.5rem;
+}
+
+.fade-in {
+  animation: fadeInUp 0.4s ease;
+}
+
+.spinner-container {
+  display: flex;
+  min-height: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-btns {
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+@media (max-width: 991px) {
+  .main-banner {
+    text-align: center;
+  }
+
+  .main-blog {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .aside-main {
+    width: 100%;
+  }
+}
+
+@keyframes fadeInUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateZ(0);
   }
 }
