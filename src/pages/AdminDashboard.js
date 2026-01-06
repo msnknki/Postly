@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiService } from '../services/api';
 import '../styles/AdminDashboard.css';
@@ -14,6 +14,14 @@ const AdminDashboard = () => {
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
+  const checkAdminAccess = useCallback(() => {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    if (!user.role || user.role !== 'admin') {
+      navigate('/');
+      return;
+    }
+  }, [navigate]);
+
   useEffect(() => {
     checkAdminAccess();
     if (activeTab === 'overview') {
@@ -25,15 +33,7 @@ const AdminDashboard = () => {
     } else if (activeTab === 'comments') {
       fetchComments();
     }
-  }, [activeTab]);
-
-  const checkAdminAccess = () => {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    if (!user.role || user.role !== 'admin') {
-      navigate('/');
-      return;
-    }
-  };
+  }, [activeTab, checkAdminAccess]);
 
   const fetchStats = async () => {
     try {
